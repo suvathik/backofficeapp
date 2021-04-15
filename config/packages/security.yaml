@@ -1,4 +1,7 @@
 security:
+    role_hierarchy:
+        ROLE_ADMIN: ROLE_USER
+        ROLE_SUPER_ADMIN: [ ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH ]
     encoders:
         App\Entity\User:
             algorithm: auto
@@ -36,3 +39,13 @@ security:
     access_control:
         # - { path: ^/admin, roles: ROLE_ADMIN }
         # - { path: ^/profile, roles: ROLE_USER }
+
+#    require ROLE_ADMIN for /admin*
+          - { path: '^/admin', roles: ROLE_ADMIN }
+
+        # or require ROLE_ADMIN or IS_AUTHENTICATED_FULLY for /admin*
+          - { path: '^/admin', roles: [ IS_AUTHENTICATED_FULLY, ROLE_ADMIN ] }
+
+        # the 'path' value can be any valid regular expression
+        # (this one will match URLs like /api/post/7298 and /api/comment/528491)
+          - { path: ^/api/(post|comment)/\d+$, roles: ROLE_USER }
