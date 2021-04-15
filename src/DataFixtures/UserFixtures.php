@@ -28,6 +28,7 @@ class UserFixtures extends Fixture
         $user->setPassword($this->passwordEncoder->encodePassword(
             $user,
             'suvathi'));
+        $user->setRoles(array('ROLE_ADMIN'));
          $manager->persist($user);
 
         $manager->flush();
