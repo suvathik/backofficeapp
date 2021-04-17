@@ -1,0 +1,52 @@
+{% block title %}
+    List User
+{% endblock %}
+
+<table style="width:100%;" id="department-table" class="table table-striped table-bordered">
+    <thead>
+    <tr>
+        <th>Firstname</th>
+        <th>Lastname</th>
+        <th>Phone</th>
+        <th>Email</th>
+        <th style="min-width:140px;">Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for user in users %}
+
+            <td>{{ user.firstName }}</td>
+            <td>{{ user.lastName }}</td>
+        <td>{{ user.phone }}</td>
+        <td>{{ user.email }}</td>
+
+
+
+            <td>
+
+                <a class="btn btn-xs btn-success m-b-5" data-container="body" data-toggle_tooltip="tooltip" data-title="Add Account" href="{{ path('add_user',{'user_id':user.id}) }}">
+                    <i class="fa fa-lg fa-fw fa-add">Add</i>
+                </a>
+
+                <a class="btn btn-xs btn-success m-b-5" data-container="body" data-toggle_tooltip="tooltip" data-title="Edit Account" href="{{ path('edit_user',{'user_id':user.id}) }}">
+                <i class="fa fa-lg fa-fw fa-edit">Edit</i>
+                </a>
+
+                <a class="btn btn-xs btn-success m-b-5" data-container="body" data-toggle_tooltip="tooltip" data-title="Delete Account" href="{{ path('delete_user',{'user_id':user.id}) }}">
+                    <i class="fa fa-lg fa-fw fa-delete">Delete</i>
+                </a>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+{#{% else %}#}
+{#    <div class="vertical-box-inner-cell vertical-align">#}
+{#        <p>#}
+{#            <em>No incident reports known to the system yet.</em>#}
+{#        </p>#}
+{#    </div>#}
+{#{% endif %}#}
+{#{% endblock %}#}
+

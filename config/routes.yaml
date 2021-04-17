@@ -1,3 +1,16 @@
-#index:
-#    path: /
-#    controller: App\Controller\DefaultController::index
+list_user:
+    path: /
+    controller: App\Controller\UserController::listuserAction
+
+add_user:
+    path: /
+    controller: App\Controller\UserController::addAction
+
+edit_user:
+    path: /
+    controller: App\Controller\UserController::editAction
+
+delete_user:
+    path: /
+    controller: App\Controller\UserController::deleteAction
+
